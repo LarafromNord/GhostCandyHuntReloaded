@@ -16,12 +16,6 @@ public class ScoreBoardManager : MonoBehaviour
         currentScoreText.text = currentScore.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void SlowUpdate()
     {
         SetNewHighscore();
