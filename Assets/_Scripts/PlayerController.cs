@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public bool jumpAbilityValid = false;
     public bool magnetAbilityValid = false;
     public bool isDieing = false;
+    private float abilityMultuplier;
 
     public CandyController CControllerC = null;
 
@@ -60,20 +61,33 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
-        if (Input.GetKey(KeyCode.A))
+        if (!isJumping)
         {
-            transform.Translate(-transform.right * speed * Time.deltaTime);
-            catRenderer.flipX = true;
+            float HorizontalDirection = Input.GetAxis("horizontal");
+            transform.Translate(HorizontalDirection * speed * abilityMultuplier * Time.deltaTime * Vector2.right);
+            if (HorizontalDirection < 0)
+            {
+                catRenderer.flipX = true;
+            }
+            else
+            {
+                catRenderer.flipX = false;
+            }
+        }
+        
+
+
+ /*       if (Input.GetKey(KeyCode.A))
+        {
+            
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(transform.right * speed * Time.deltaTime);
-            catRenderer.flipX = false;
+            
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+/*        if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(-transform.right * speed * Time.deltaTime);
             catRenderer.flipX = true;
@@ -83,7 +97,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(transform.right * speed * Time.deltaTime);
             catRenderer.flipX = false;
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
