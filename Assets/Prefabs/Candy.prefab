@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8699367325879465153}
   - component: {fileID: 1928122248719784366}
-  - component: {fileID: 2519032368611346637}
   - component: {fileID: 347027085685309886}
+  - component: {fileID: 2519032368611346637}
   m_Layer: 0
   m_Name: Candy
   m_TagString: Untagged
@@ -86,22 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2519032368611346637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134135846226644178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae39d0eac9a808b419578a06558bc93c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  candySprites: []
-  candyPoints: 0
-  targetCandy: {fileID: 0}
-  candyRarity: 0
 --- !u!58 &347027085685309886
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,3 +121,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2519032368611346637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134135846226644178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae39d0eac9a808b419578a06558bc93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  candySprites:
+  - {fileID: 21300000, guid: d7f21ef4780e77143a116f83cb3dfdb1, type: 3}
+  - {fileID: 21300000, guid: 7b92a4c97523aca499f58872243a7595, type: 3}
+  - {fileID: 21300000, guid: 231fbc243178f564d9762d5506426ee0, type: 3}
+  - {fileID: 21300000, guid: 9b6b22e6c3340ca4190faeee21785350, type: 3}
+  - {fileID: 21300000, guid: f970dbf2fe8847443a5ed7802e719c7a, type: 3}
+  - {fileID: 21300000, guid: b67910d98a7a31e43982f36b814f2514, type: 3}
+  candyPoints: 0
+  targetCandy: {fileID: 0}
+  candyRarity: 0
