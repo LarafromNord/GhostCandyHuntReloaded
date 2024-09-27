@@ -10,6 +10,7 @@ public class CandyController : MonoBehaviour
     public int candyPoints;
     public Transform targetCandy;
     public int candyRarity;
+    public int specialAbilityType;
 
 
     void Start()
@@ -27,18 +28,14 @@ public class CandyController : MonoBehaviour
                 case 2:
                 candyPoints = 5; break;
                 case 3:
-                candyPoints = 20; break;
-        }    
-     /*   if (candyRarity == 1f) { candyPoints = 1; }
-        else if (candyRarity == 2f) { candyPoints = 3; }
-        else if (candyRarity == 3f) { candyPoints = 5; }
-        else if (candyRarity == 4f) { candyPoints = 20; }*/
-
+                candyPoints = 20;
+                specialAbilityType = Random.Range(1, 3);
+                break;
+        }
     }
 
     public void Attract(Transform target, float speed)
     {
         transform.position = Vector2.Lerp(transform.position, target.position, Time.deltaTime * speed);
-
     }
 }

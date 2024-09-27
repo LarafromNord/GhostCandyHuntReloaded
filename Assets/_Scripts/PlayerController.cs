@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool isJumping;
     private bool Dashing = false;
     public float dashTime = 1;
+    public int abilityType;
     public float dashCurrentTime = 0;
     public bool dashAbilityValid = false;
     public bool jumpAbilityValid = false;
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
         if (!isJumping)
         {
-            float HorizontalDirection = Input.GetAxis("horizontal");
+            float HorizontalDirection = Input.GetAxis("Horizontal");
             transform.Translate(HorizontalDirection * speed * abilityMultuplier * Time.deltaTime * Vector2.right);
             if (HorizontalDirection < 0)
             {
@@ -73,18 +74,6 @@ public class PlayerController : MonoBehaviour
             {
                 catRenderer.flipX = false;
             }
-        }
-        
-
-
- /*       if (Input.GetKey(KeyCode.A))
-        {
-            
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            
         }
 
 /*        if (Input.GetKey(KeyCode.LeftArrow))
@@ -106,7 +95,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             Dashing = false;
-            Dash();
+        //    Dash();
         }
     }
 
@@ -121,7 +110,8 @@ public class PlayerController : MonoBehaviour
             scorePoints = scorePoints + CControllerC.candyPoints;
             Destroy(other.gameObject);
             Debug.Log(scorePoints);
-
+            abilityType = CControllerC.specialAbilityType;
+            ActivateAbilities();
         }
         
         else if (other.gameObject.CompareTag("Water"))
@@ -200,4 +190,38 @@ public class PlayerController : MonoBehaviour
             catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[2];
         }
     }
+
+    void ActivateAbilities()
+    {
+        Debug.Log(abilityType);
+        switch (abilityType)
+        {
+            case 1:
+                dashAbilityValid = true;
+                jumpAbilityValid = false;
+                magnetAbilityValid = false;
+                abilityMultuplier = 2f;
+                break;  
+            case 2:
+                dashAbilityValid = false;
+                jumpAbilityValid = true;
+                magnetAbilityValid = false;
+                abilityMultuplier = 1.6f;
+                break;
+            case 3:
+                dashAbilityValid = false;
+                jumpAbilityValid = false;
+                magnetAbilityValid = true;
+                abilityMultuplier = 1f;
+                break;
+            default:
+                dashAbilityValid = false;
+                jumpAbilityValid = false;
+                magnetAbilityValid = false;
+                abilityMultuplier = 1f;
+                break;
+        }
+    }
+
+ //   void 
 }
