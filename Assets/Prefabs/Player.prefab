@@ -158,7 +158,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3520542645405409282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4adc7c698f944314a8aa2c37b8a8d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 6660957458764909409}
   catSprites: []
   speed: 5.5
   scorePoints: 0
@@ -185,4 +185,4 @@ MonoBehaviour:
   jumpAbilityValid: 0
   magnetAbilityValid: 0
   isDieing: 0
-  CControllerC: {fileID: 0}
+  CControllerC: {fileID: 2519032368611346637, guid: 510f2306494abd04089c0a3eea0aab6b, type: 3}
