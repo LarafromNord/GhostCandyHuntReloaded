@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Candy
+  - Water
   layers:
   - Default
   - TransparentFX
