@@ -11,6 +11,7 @@ public class CandyController : MonoBehaviour
     public Transform targetCandy;
     public int candyRarity;
 
+
     void Start()
     {
         targetCandy.GetComponent<SpriteRenderer>().sprite = candySprites[Random.Range(0, candySprites.Length)];
@@ -32,6 +33,12 @@ public class CandyController : MonoBehaviour
         else if (candyRarity == 2f) { candyPoints = 3; }
         else if (candyRarity == 3f) { candyPoints = 5; }
         else if (candyRarity == 4f) { candyPoints = 20; }*/
+
+    }
+
+    public void Attract(Transform target, float speed)
+    {
+        transform.position = Vector2.Lerp(transform.position, target.position, Time.deltaTime * speed);
 
     }
 }
