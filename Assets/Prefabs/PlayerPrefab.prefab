@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4adc7c698f944314a8aa2c37b8a8d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catSprites:
   rb: {fileID: 0}
+  catSprites:
   - {fileID: 21300000, guid: a13b1e72a8a62ff43a714bdd5fa8ab26, type: 3}
   - {fileID: 21300000, guid: 8b02a6caad1bc3f45b1e5ae000237546, type: 3}
   - {fileID: 21300000, guid: e22b51b71efbf274b89890990965c271, type: 3}
