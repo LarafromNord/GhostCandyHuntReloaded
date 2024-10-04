@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public bool magnetAbilityValid = false;
     public bool isDieing = false;
     private float abilityMultuplier;
+    public GameObject deathCat;
 
  //   public CandyController CControllerC = null;
 
@@ -163,8 +164,12 @@ public class PlayerController : MonoBehaviour
 
     public void Death()
     {
-        StartCoroutine(DeathCoroutine());
-        SceneManager.LoadScene("GameOverScene");
+
+        Instantiate(deathCat);
+        deathCat.transform.position = gameObject.transform.position;
+        gameObject.SetActive(false);
+     //   StartCoroutine(DeathCoroutine());
+     //   SceneManager.LoadScene("GameOverScene");
     }
 
     public void SpriteStateSwitch()
@@ -192,7 +197,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator DeathCoroutine()
+/*    IEnumerator DeathCoroutine()
     {
         //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
@@ -208,7 +213,7 @@ public class PlayerController : MonoBehaviour
 
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-    }
+    }*/
 
     void ActivateAbilities()
     {

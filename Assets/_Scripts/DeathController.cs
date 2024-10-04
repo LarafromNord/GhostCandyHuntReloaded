@@ -8,13 +8,11 @@ public class DeathController : MonoBehaviour
 {
     private SpriteRenderer catRenderer;
     public Sprite[] dieingCatSprites;
-    public PlayerController PController = null;
 
-    // Start is called before the first frame update
-    public void Dieing()
+
+    private void Start()
     {
-        StartCoroutine(SpriteAnim(5));
-
+        StartCoroutine(SpriteAnim(0.25f));
     }
 
    
@@ -22,10 +20,10 @@ public class DeathController : MonoBehaviour
     IEnumerator SpriteAnim(float time)
     {
         yield return new WaitForSeconds(time);
-        catRenderer.GetComponent<SpriteRenderer>().sprite = dieingCatSprites[0];
+        gameObject.GetComponent<SpriteRenderer>().sprite = dieingCatSprites[0];
         yield return new WaitForSeconds(time);
-        catRenderer.GetComponent<SpriteRenderer>().sprite = dieingCatSprites[1];
-        yield return new WaitForSeconds(time*2);
+        gameObject.GetComponent<SpriteRenderer>().sprite = dieingCatSprites[1];
+        yield return new WaitForSeconds(time);
         SceneManager.LoadScene("GameOverScene");
     }
     //public void SpriteStateSwitch()
