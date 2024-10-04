@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Sprite[] catSprites;
     public float speed = 5.5f;
-    private float jumpForce = 250f;
+    private float jumpForce = 285f;
     public int scorePoints;
     public AudioSource audioSource;
     public AudioClip jumpSound;
