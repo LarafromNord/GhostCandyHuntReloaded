@@ -135,11 +135,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   candySprites:
   - {fileID: 21300000, guid: d7f21ef4780e77143a116f83cb3dfdb1, type: 3}
-  - {fileID: 21300000, guid: 7b92a4c97523aca499f58872243a7595, type: 3}
   - {fileID: 21300000, guid: 231fbc243178f564d9762d5506426ee0, type: 3}
+  - {fileID: 21300000, guid: b67910d98a7a31e43982f36b814f2514, type: 3}
+  - {fileID: 21300000, guid: 7b92a4c97523aca499f58872243a7595, type: 3}
   - {fileID: 21300000, guid: 9b6b22e6c3340ca4190faeee21785350, type: 3}
   - {fileID: 21300000, guid: f970dbf2fe8847443a5ed7802e719c7a, type: 3}
-  - {fileID: 21300000, guid: b67910d98a7a31e43982f36b814f2514, type: 3}
   candyPoints: 0
   targetCandy: {fileID: 8699367325879465153}
   candyRarity: 0
