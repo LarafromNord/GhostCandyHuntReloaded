@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4190158152342396941}
   - component: {fileID: 3908694231087604178}
   - component: {fileID: 612512604599442853}
-  - component: {fileID: 5044366731575635820}
+  - component: {fileID: 4640974029989563783}
   m_Layer: 0
   m_Name: DieingCat
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6718956479335576592}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9787539, y: 1.0877293, z: 0}
+  m_LocalPosition: {x: -8.272693, y: -3.3150282, z: 0}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 33.32, y: 15.990196}
   m_EdgeRadius: 0
---- !u!114 &5044366731575635820
+--- !u!114 &4640974029989563783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,10 +140,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6718956479335576592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3adb04110b4553549810908a3da5fbef, type: 3}
+  m_Script: {fileID: 11500000, guid: f1bea6ac3cd482d419160e309047e3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dieingCatSprites:
   - {fileID: 21300000, guid: 8b02a6caad1bc3f45b1e5ae000237546, type: 3}
   - {fileID: 21300000, guid: e22b51b71efbf274b89890990965c271, type: 3}
-  PController: {fileID: 3520542645405409282, guid: 71e2ed771e1e63f459459d4138dd4d39, type: 3}
