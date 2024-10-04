@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource deathSource;
     public AudioClip deathSound;
     private SpriteRenderer catRenderer;
+    public GameObject magnetObject;
     private int maxJump = 1;
     private int currentjumps;
     private bool isJumping;
@@ -220,7 +221,7 @@ public class PlayerController : MonoBehaviour
         //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
-        yield return new WaitForSeconds(0.0756f);
+        yield return new WaitForSeconds(0.05f);
         AbilityData();
 
         yield return new WaitForSeconds(0.1456f);
@@ -255,6 +256,14 @@ public class PlayerController : MonoBehaviour
                 magnetAbilityValid = false;
                 abilityMultuplier = 1f;
                 break;
+        }
+    }
+
+    void AbilityLogic()
+    {
+        while (magnetAbilityValid)
+        {
+            magnetObject.GetComponent<Magnet>().magnetAbilityActivate();
         }
     }
 }
