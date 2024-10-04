@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2543072360838230789}
   - component: {fileID: 5528361522350131443}
-  - component: {fileID: 4191347037789357360}
   - component: {fileID: 6660957458764909409}
   - component: {fileID: 3520542645405409282}
-  - component: {fileID: 4563255457533336401}
+  - component: {fileID: 5382758287485354207}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -88,51 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4191347037789357360
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4006873015041035706}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 3.16, y: -3.15}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 33.32, y: 28.081211}
-    newSize: {x: 33.32, y: 28.081211}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 22, y: 28}
-  m_EdgeRadius: 0
 --- !u!50 &6660957458764909409
 Rigidbody2D:
   serializedVersion: 4
@@ -186,22 +140,57 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 0f697adb11a386146bd2d00780ff47b1, type: 3}
   deathSource: {fileID: 0}
   deathSound: {fileID: 8300000, guid: 73c030960a76e5e4f90cd077c90080a6, type: 3}
+  magnetObject: {fileID: 0}
   dashTime: 1
+  abilityType: 0
   dashCurrentTime: 0
   dashAbilityValid: 0
   jumpAbilityValid: 0
   magnetAbilityValid: 0
   isDieing: 0
-  CControllerC: {fileID: 2519032368611346637, guid: 510f2306494abd04089c0a3eea0aab6b, type: 3}
---- !u!114 &4563255457533336401
-MonoBehaviour:
+  deathCat: {fileID: 6718956479335576592, guid: 13a6c895e987ae7439a09168e869ddf1, type: 3}
+--- !u!61 &5382758287485354207
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4006873015041035706}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3adb04110b4553549810908a3da5fbef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 33.32, y: 28.081211}
+    newSize: {x: 33.32, y: 28.081211}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 33.32, y: 28.081211}
+  m_EdgeRadius: 0

@@ -24,6 +24,7 @@ public class Magnet : MonoBehaviour
 
     public void magnetAbilityActivate()
     {
+        
         gameObject.SetActive(GetComponent<PlayerController>().magnetAbilityValid);
     }
 }

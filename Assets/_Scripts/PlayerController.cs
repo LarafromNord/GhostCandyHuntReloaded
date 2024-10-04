@@ -43,13 +43,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Dashing)
+        {
+            return;
+        }
+
+ /*       if (Input.GetKeyDown(KeyCode.Space))
         {
             if (currentjumps < maxJump)
             {
                 jump();
             }
-        }
+        }*/
         else if (Input.GetKeyDown(KeyCode.W))
         {
             if (currentjumps < maxJump)
@@ -68,7 +73,7 @@ public class PlayerController : MonoBehaviour
         if (!isJumping)
         {
             float HorizontalDirection = Input.GetAxis("Horizontal");
-            transform.Translate(HorizontalDirection * speed * abilityMultuplier * Time.deltaTime * Vector2.right);
+            transform.Translate(HorizontalDirection * speed * Time.deltaTime * Vector2.right);
             if (HorizontalDirection < 0)
             {
                 catRenderer.flipX = true;
@@ -91,15 +96,17 @@ public class PlayerController : MonoBehaviour
             catRenderer.flipX = false;
         }*/
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Dashing = true;
+            Dash();
         }
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.Space))
         {
             Dashing = false;
         //    Dash();
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -119,9 +126,10 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Water"))
         {
             Debug.Log("Sound");
-            deathSource.PlayOneShot(deathSound);
+         //   deathSource.PlayOneShot(deathSound);
             isDieing = true;
-            SpriteStateSwitch();
+            Death();
+        //    SpriteStateSwitch();
         }
 
     }
@@ -138,7 +146,8 @@ public class PlayerController : MonoBehaviour
 
     public void Dash()
     {
-        if (dashCurrentTime < dashTime)
+        StartCoroutine(dashingCoroutine());
+     /*   if (dashCurrentTime < dashTime)
         {
             dashCurrentTime++;
             speed = 40f;
@@ -147,7 +156,7 @@ public class PlayerController : MonoBehaviour
         {
             dashCurrentTime = 0;
             speed = 4.5f;
-        }
+        }*/
     }
 
     public void jump()
@@ -165,8 +174,8 @@ public class PlayerController : MonoBehaviour
     public void Death()
     {
 
-        Instantiate(deathCat);
-        deathCat.transform.position = gameObject.transform.position;
+        var c = Instantiate(deathCat);
+        c.transform.position = gameObject.transform.position;
         gameObject.SetActive(false);
      //   StartCoroutine(DeathCoroutine());
      //   SceneManager.LoadScene("GameOverScene");
@@ -218,27 +227,84 @@ public class PlayerController : MonoBehaviour
     void ActivateAbilities()
     {
         Debug.Log(abilityType);
-        StartCoroutine(SAbilityCoroutine());
+        StartCoroutine(magnetAbilityCoroutine());
     }
 
-    IEnumerator SAbilityCoroutine()
+    IEnumerator magnetAbilityCoroutine()
     {
+        magnetObject.SetActive(true);
         //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
         yield return new WaitForSeconds(0.05f);
         AbilityData();
 
-        yield return new WaitForSeconds(0.1456f);
-
-
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(5);
+        magnetObject.SetActive(true);
 
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
-    
+
+    IEnumerator dashAbilityCoroutine()
+    {
+        
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        dashAbilityValid = true;
+        Debug.Log("Dashing time started");
+        yield return new WaitForSeconds(0.05f);
+        AbilityData();
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(5);
+        dashAbilityValid = false;
+        Debug.Log("Dashing time ended");
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+    }
+
+    IEnumerator dashingCoroutine()
+    {
+        float dashTime = 0.5f;
+        float Horizontal = 1f;
+        if (catRenderer.flipX)
+        {
+            Horizontal = -1f;
+        }
+        else
+        {
+            Horizontal = 1f;
+        }
+       
+
+        while (dashTime > 0.0f)
+        {
+            dashTime -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+            transform.Translate(Horizontal * speed * abilityMultuplier * Time.deltaTime * Vector2.right);
+        }
+
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+
+        Debug.Log("Dashing time started");
+        yield return new WaitForSeconds(0.05f);
+        AbilityData();
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(5);
+        dashAbilityValid = false;
+        Debug.Log("Dashing time ended");
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+    }
+
     void AbilityData()
     {
         switch (abilityType)
@@ -261,14 +327,6 @@ public class PlayerController : MonoBehaviour
                 magnetAbilityValid = false;
                 abilityMultuplier = 1f;
                 break;
-        }
-    }
-
-    void AbilityLogic()
-    {
-        while (magnetAbilityValid)
-        {
-            magnetObject.GetComponent<Magnet>().magnetAbilityActivate();
         }
     }
 }
