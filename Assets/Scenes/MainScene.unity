@@ -1744,7 +1744,7 @@ MonoBehaviour:
   scoreText: {fileID: 365077539}
   timerText: {fileID: 1657028207}
   PC: {fileID: 904177269}
-  timeRemaining: 60
+  timeRemaining: 5
   timerIsRunning: 0
   PCController: {fileID: 904177283}
 --- !u!1001 &730784784
@@ -2600,7 +2600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7694251011465004446, guid: abf8c4662d2df2340aef8eb114555d97, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7694251011465004446, guid: abf8c4662d2df2340aef8eb114555d97, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2624,7 +2624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7694251011465004446, guid: abf8c4662d2df2340aef8eb114555d97, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.244
+      value: -3.2
       objectReference: {fileID: 0}
     - target: {fileID: 7694251011465004446, guid: abf8c4662d2df2340aef8eb114555d97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2922,6 +2922,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2543072360838230789, guid: 71e2ed771e1e63f459459d4138dd4d39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3520542645405409282, guid: 71e2ed771e1e63f459459d4138dd4d39, type: 3}
+      propertyPath: deathCat
+      value: 
+      objectReference: {fileID: 6718956479335576592, guid: 13a6c895e987ae7439a09168e869ddf1, type: 3}
+    - target: {fileID: 3520542645405409282, guid: 71e2ed771e1e63f459459d4138dd4d39, type: 3}
+      propertyPath: isDieing
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3520542645405409282, guid: 71e2ed771e1e63f459459d4138dd4d39, type: 3}
