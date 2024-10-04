@@ -12,6 +12,7 @@ public class ScoreBoardManager : MonoBehaviour
     void Start()
     {
         currentScore = PlayerPrefs.GetInt("Score", 0);
+        highscore = PlayerPrefs.GetInt("HighScore", 0);
         highScoreText.text = highscore.ToString();
         currentScoreText.text = currentScore.ToString();
     }

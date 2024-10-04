@@ -16,7 +16,7 @@ public class CandyController : MonoBehaviour
     void Start()
     {
         targetCandy.GetComponent<SpriteRenderer>().sprite = candySprites[Random.Range(0, candySprites.Length)];
-        candyRarity = Random.Range(1, 4);
+        candyRarity = Random.Range(0, 4);
         Debug.Log("CaPo " + candyPoints);
         //   targetCandy.GetComponent<SpriteRenderer>().color = [Random.Range(0, candySprites.Length)];
         switch(candyRarity)
@@ -29,7 +29,7 @@ public class CandyController : MonoBehaviour
                 candyPoints = 5; break;
                 case 3:
                 candyPoints = 20;
-                specialAbilityType = Random.Range(1, 3);
+                specialAbilityType = Random.Range(1, 5);
                 break;
         }
     }
