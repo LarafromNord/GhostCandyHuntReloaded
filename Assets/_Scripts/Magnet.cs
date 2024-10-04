@@ -21,4 +21,9 @@ public class Magnet : MonoBehaviour
             candy.Attract(transform, attractionSpeed);
         }
     }
+
+    public void magnetAbilityActivate()
+    {
+        gameObject.SetActive(GetComponent<PlayerController>().magnetAbilityValid);
+    }
 }

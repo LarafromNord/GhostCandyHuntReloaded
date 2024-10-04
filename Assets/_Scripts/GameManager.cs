@@ -45,6 +45,11 @@ public class GameManager : MonoBehaviour
     {
         scoreText.text = PCController.scorePoints.ToString();
         PlayerPrefs.SetInt("Score", PCController.scorePoints);
+
+        if (PCController.scorePoints > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", PCController.scorePoints);
+        }
     }
 
     void DisplayTime(float timeToDisplay)
@@ -57,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     public void OnStartGame()
     {
-        SceneManager.LoadScene("MainGameScene");
+        SceneManager.LoadScene("MainScene");
         Debug.Log("Loaded Game Scene");
     }
 
