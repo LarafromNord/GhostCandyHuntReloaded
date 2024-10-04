@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public bool isDieing = false;
     private float abilityMultuplier;
     private float jumpAbilityMultiplier;
-    public GameObject deathCatPrefab;
+    public GameObject deathCat;
 
  //   public CandyController CControllerC = null;
 
@@ -165,8 +165,8 @@ public class PlayerController : MonoBehaviour
     public void Death()
     {
 
-        var deathCat = Instantiate(deathCatPrefab);
-        deathCat.transform.position = gameObject.transform.position;
+        var c = Instantiate(deathCat);
+        c.transform.position = gameObject.transform.position;
         gameObject.SetActive(false);
      //   StartCoroutine(DeathCoroutine());
      //   SceneManager.LoadScene("GameOverScene");
