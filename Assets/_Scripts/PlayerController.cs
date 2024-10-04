@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         catRenderer = GetComponent<SpriteRenderer>();
         SpriteStateSwitch();
         AbilityData();
+        magnetObject.SetActive(false);
     }
 
     void Update()
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log(scorePoints);
             ActivateAbilities();
+            AbilityData();
         }
         
         else if (other.gameObject.CompareTag("Water"))
@@ -147,16 +149,6 @@ public class PlayerController : MonoBehaviour
     public void Dash()
     {
         StartCoroutine(dashingCoroutine());
-     /*   if (dashCurrentTime < dashTime)
-        {
-            dashCurrentTime++;
-            speed = 40f;
-        }
-        else
-        {
-            dashCurrentTime = 0;
-            speed = 4.5f;
-        }*/
     }
 
     public void jump()
@@ -167,7 +159,6 @@ public class PlayerController : MonoBehaviour
             currentjumps += 1;
 
             audioSource.PlayOneShot(jumpSound, 0.7F);
-            //  isJumping = true;
         }
     }
 
@@ -186,23 +177,23 @@ public class PlayerController : MonoBehaviour
         if (!isDieing)
         {
             catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[0];
-        }
-        else if (dashAbilityValid)
-        {
-            catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[3];
-        }
-        else if (jumpAbilityValid)
-        {
-            catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[4];
-        }
-        else if (magnetAbilityValid)
-        {
-            catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[5];
-        }
-        else if (isDieing)
-        {
-            catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[1];
-            catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[2];
+
+            if (dashAbilityValid)
+            {
+                catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[3];
+            }
+            else if (jumpAbilityValid)
+            {
+                catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[4];
+            }
+            else if (magnetAbilityValid)
+            {
+                catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[5];
+            }
+            else
+            {
+                catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[0];
+            }
         }
     }
 
@@ -233,38 +224,28 @@ public class PlayerController : MonoBehaviour
     IEnumerator magnetAbilityCoroutine()
     {
         magnetObject.SetActive(true);
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
         yield return new WaitForSeconds(0.05f);
         AbilityData();
 
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(5);
-        magnetObject.SetActive(true);
-
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        magnetObject.SetActive(false);
     }
 
     IEnumerator dashAbilityCoroutine()
     {
-        
+
         //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
         dashAbilityValid = true;
-        Debug.Log("Dashing time started");
-        yield return new WaitForSeconds(0.05f);
-        AbilityData();
+        Debug.Log("Dashing allowed");
 
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         dashAbilityValid = false;
-        Debug.Log("Dashing time ended");
-
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        Debug.Log("Dashing not allowed");
     }
 
     IEnumerator dashingCoroutine()
@@ -287,22 +268,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForEndOfFrame();
             transform.Translate(Horizontal * speed * abilityMultuplier * Time.deltaTime * Vector2.right);
         }
-
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-
-        Debug.Log("Dashing time started");
-        yield return new WaitForSeconds(0.05f);
-        AbilityData();
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(5);
         dashAbilityValid = false;
-        Debug.Log("Dashing time ended");
-
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
     void AbilityData()
