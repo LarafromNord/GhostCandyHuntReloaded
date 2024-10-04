@@ -15,6 +15,6 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Time.deltaTime * 1.4f, 0, 0);
+        transform.Translate(Time.deltaTime * 1.75f, 0, 0);
     }
 }

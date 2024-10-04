@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
     public bool magnetAbilityValid = false;
     public bool isDieing = false;
     private float abilityMultuplier;
-    public GameObject deathCat;
+    private float jumpAbilityMultiplier;
+    public GameObject deathCatPrefab;
 
  //   public CandyController CControllerC = null;
 
@@ -115,8 +116,6 @@ public class PlayerController : MonoBehaviour
     {
         GameObject hitObject = other.gameObject;
         Debug.Log("Hit: " + hitObject.tag);
-
-       
         
         if (other.gameObject.CompareTag("Water"))
         {
@@ -124,7 +123,6 @@ public class PlayerController : MonoBehaviour
          //   deathSource.PlayOneShot(deathSound);
             isDieing = true;
             Death();
-        //    SpriteStateSwitch();
         }
 
     }
@@ -157,7 +155,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentjumps < maxJump)
         {
-            rb.AddForce(transform.up * jumpForce);
+            rb.AddForce(transform.up * (jumpForce * jumpAbilityMultiplier));
             currentjumps += 1;
 
             audioSource.PlayOneShot(jumpSound, 0.7F);
@@ -167,8 +165,8 @@ public class PlayerController : MonoBehaviour
     public void Death()
     {
 
-        var c = Instantiate(deathCat);
-        c.transform.position = gameObject.transform.position;
+        var deathCat = Instantiate(deathCatPrefab);
+        deathCat.transform.position = gameObject.transform.position;
         gameObject.SetActive(false);
      //   StartCoroutine(DeathCoroutine());
      //   SceneManager.LoadScene("GameOverScene");
@@ -198,24 +196,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-/*    IEnumerator DeathCoroutine()
-    {
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
-        isDieing = true;
-        catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[1];
-        yield return new WaitForSeconds(0.0756f);
-        catRenderer.GetComponent<SpriteRenderer>().sprite = catSprites[2];
-        yield return new WaitForSeconds(0.1456f);
-        SceneManager.LoadScene("GameOverScene");
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(5);
-
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-    }*/
 
     void ActivateAbilities()
     {
@@ -300,7 +280,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case 2:
                 jumpAbilityValid = true;
-                abilityMultuplier = 1.6f;
+                abilityMultuplier = 1f;
+                jumpAbilityMultiplier = 1.6f;
                 break;
             case 3:
                 magnetAbilityValid = true;
@@ -311,6 +292,7 @@ public class PlayerController : MonoBehaviour
                 jumpAbilityValid = false;
                 magnetAbilityValid = false;
                 abilityMultuplier = 1f;
+                jumpAbilityMultiplier = 1.0f;
                 break;
         }
     }
