@@ -23,7 +23,7 @@ public class DeathController : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = dieingCatSprites[0];
         yield return new WaitForSeconds(time);
         gameObject.GetComponent<SpriteRenderer>().sprite = dieingCatSprites[1];
-        yield return new WaitForSeconds(time*2);
+        yield return new WaitForSeconds(time);
         SceneManager.LoadScene("GameOverScene");
     }
     //public void SpriteStateSwitch()
