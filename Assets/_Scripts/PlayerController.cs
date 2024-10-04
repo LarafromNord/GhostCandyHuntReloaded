@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         SpriteStateSwitch();
         AbilityData();
         magnetObject.SetActive(false);
+        dashAbilityValid = true;
     }
 
     void Update()
@@ -115,17 +116,9 @@ public class PlayerController : MonoBehaviour
         GameObject hitObject = other.gameObject;
         Debug.Log("Hit: " + hitObject.tag);
 
-        if (other.gameObject.CompareTag("Candy"))
-        {
-            scorePoints = scorePoints + other.gameObject.GetComponent<CandyController>().candyPoints;
-            abilityType = scorePoints + other.gameObject.GetComponent<CandyController>().specialAbilityType;
-            Destroy(other.gameObject);
-            Debug.Log(scorePoints);
-            ActivateAbilities();
-            AbilityData();
-        }
+       
         
-        else if (other.gameObject.CompareTag("Water"))
+        if (other.gameObject.CompareTag("Water"))
         {
             Debug.Log("Sound");
          //   deathSource.PlayOneShot(deathSound);
@@ -143,6 +136,15 @@ public class PlayerController : MonoBehaviour
             currentjumps = 0;
             Debug.Log(currentjumps);
             //  isJumping = false;
+        }
+        else if (collision.gameObject.CompareTag("Candy"))
+        {
+            scorePoints = scorePoints + collision.gameObject.GetComponent<CandyController>().candyPoints;
+            abilityType = scorePoints + collision.gameObject.GetComponent<CandyController>().specialAbilityType;
+            Destroy(collision.gameObject);
+            Debug.Log(scorePoints);
+            ActivateAbilities();
+            AbilityData();
         }
     }
 
@@ -217,7 +219,9 @@ public class PlayerController : MonoBehaviour
 
     void ActivateAbilities()
     {
-        Debug.Log(abilityType);
+        SpriteStateSwitch();
+        StartCoroutine(dashAbilityCoroutine());
+        StartCoroutine(magnetAbilityCoroutine());
         StartCoroutine(magnetAbilityCoroutine());
     }
 
@@ -245,6 +249,21 @@ public class PlayerController : MonoBehaviour
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(10);
         dashAbilityValid = false;
+        Debug.Log("Dashing not allowed");
+    }
+
+    IEnumerator JumpAbilityCoroutine()
+    {
+
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        jumpAbilityValid = true;
+        Debug.Log("Dashing allowed");
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(10);
+        jumpAbilityValid = false;
         Debug.Log("Dashing not allowed");
     }
 
